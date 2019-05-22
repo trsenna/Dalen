@@ -17,8 +17,8 @@ abstract class AbstractView implements ViewInterface
     /**
      * AbstractView constructor.
      *
-     * @param      $slug
-     * @param null $name
+     * @param        $slug
+     * @param null   $name
      */
     public function __construct( $slug, $name = null )
     {
@@ -31,17 +31,17 @@ abstract class AbstractView implements ViewInterface
      */
     public function render( array $context = [] )
     {
-        if ( !file_exists( $this->locate( $this->slug, $this->name ) ) ) {
+        if ( !file_exists( $this->locate() ) ) {
             return '';
         }
 
         ob_start();
 
         extract( $context );
-        include( $this->locate( $this->slug, $this->name ) );
+        include( $this->locate() );
 
         return ob_get_clean();
     }
 
-    public abstract function locate( $slug, $name = null );
+    public abstract function locate();
 }
