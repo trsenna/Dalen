@@ -9,5 +9,5 @@ namespace Dalen\Contracts\View;
  */
 interface ViewLocateInterface
 {
-    public function locate();
+    public function locate( ViewNameInterface $viewName );
 }

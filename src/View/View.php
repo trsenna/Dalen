@@ -4,6 +4,7 @@ namespace Dalen\View;
 
 use Dalen\Contracts\View\ViewInterface;
 use Dalen\Contracts\View\ViewLocateInterface;
+use Dalen\Contracts\View\ViewNameInterface;
 
 /**
  * Class View
@@ -12,15 +13,20 @@ use Dalen\Contracts\View\ViewLocateInterface;
  */
 class View implements ViewInterface
 {
+    protected $viewName;
     protected $viewLocate;
 
     /**
-     * AbstractView constructor.
+     * View constructor.
      *
+     * @param ViewNameInterface   $viewName
      * @param ViewLocateInterface $viewLocate
      */
-    public function __construct( ViewLocateInterface $viewLocate )
+    public function __construct(
+        ViewNameInterface $viewName,
+        ViewLocateInterface $viewLocate )
     {
+        $this->viewName = $viewName;
         $this->viewLocate = $viewLocate;
     }
 
@@ -29,14 +35,14 @@ class View implements ViewInterface
      */
     public function render( array $context = [] )
     {
-        if ( !file_exists( $this->viewLocate->locate() ) ) {
+        if ( !file_exists( $this->viewLocate->locate( $this->viewName ) ) ) {
             return '';
         }
 
         ob_start();
 
         extract( $context );
-        include( $this->viewLocate->locate() );
+        include( $this->viewLocate->locate( $this->viewName ) );
 
         return ob_get_clean();
     }
