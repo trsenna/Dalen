@@ -3,13 +3,14 @@
 namespace Dalen\View;
 
 use Dalen\Contracts\View\ViewInterface;
+use Dalen\Contracts\View\ViewLocateInterface;
 
 /**
  * Class AbstractView
  *
  * @package Dalen\View
  */
-abstract class AbstractView implements ViewInterface
+abstract class AbstractView implements ViewInterface, ViewLocateInterface
 {
     protected $slug;
     protected $name;
@@ -17,8 +18,8 @@ abstract class AbstractView implements ViewInterface
     /**
      * AbstractView constructor.
      *
-     * @param        $slug
-     * @param null   $name
+     * @param string      $slug
+     * @param string|null $name
      */
     public function __construct( $slug, $name = null )
     {
@@ -31,17 +32,15 @@ abstract class AbstractView implements ViewInterface
      */
     public function render( array $context = [] )
     {
-        if ( !file_exists( $this->locate() ) ) {
+        if ( !file_exists( $this->locate( $this->slug, $this->name ) ) ) {
             return '';
         }
 
         ob_start();
 
         extract( $context );
-        include( $this->locate() );
+        include( $this->locate( $this->slug, $this->name ) );
 
         return ob_get_clean();
     }
-
-    public abstract function locate();
 }
