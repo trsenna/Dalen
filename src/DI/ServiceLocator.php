@@ -16,19 +16,16 @@ class ServiceLocator implements ServiceLocatorInterface
     /**
      * @inheritdoc
      */
-    public function set( $id, $component )
+    public function set( string $id, object $component ): void
     {
         unset( $this->components[ $id ] );
-
-        if ( is_object( $component ) ) {
-            $this->components[ $id ] = $component;
-        }
+        $this->components[ $id ] = $component;
     }
 
     /**
      * @inheritdoc
      */
-    public function get( $id )
+    public function get( $id ): ?object
     {
         if ( isset( $this->components[ $id ] ) ) {
             return $this->components[ $id ];
@@ -40,7 +37,7 @@ class ServiceLocator implements ServiceLocatorInterface
     /**
      * @inheritdoc
      */
-    public function has( $id )
+    public function has( $id ): bool
     {
         return isset( $this->components[ $id ] );
     }

@@ -14,7 +14,7 @@ trait ServiceProviderTrait
     /**
      * @param ServiceLocatorInterface $serviceLocator
      */
-    public function register( ServiceLocatorInterface $serviceLocator )
+    public function register( ServiceLocatorInterface $serviceLocator ): void
     {
         $serviceLocator->set( static::class, $this );
     }

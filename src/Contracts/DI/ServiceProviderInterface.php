@@ -9,5 +9,5 @@ namespace Dalen\Contracts\DI;
  */
 interface ServiceProviderInterface
 {
-    public function register( ServiceLocatorInterface $serviceLocator );
+    public function register( ServiceLocatorInterface $serviceLocator ): void;
 }

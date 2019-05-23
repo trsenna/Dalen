@@ -9,9 +9,9 @@ namespace Dalen\Contracts\DI;
  */
 interface ServiceLocatorInterface extends \IteratorAggregate
 {
-    public function set( $id, $component );
+    public function set( string $id, object $component ): void;
 
-    public function get( $id );
+    public function get( string $id ): ?object;
 
-    public function has( $id );
+    public function has( string $id ): bool;
 }
