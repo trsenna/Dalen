@@ -10,7 +10,7 @@ namespace Dalen;
 # for running the plugin.
 #
 
-//plugin()->register( new Hello() );
+plugin()->register( new About() );
 
 # ------------------------------------------------------------------------------
 # Perform bootstrap actions.
