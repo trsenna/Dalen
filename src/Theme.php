@@ -14,6 +14,9 @@ use Dalen\Contracts\DI\ServiceProviderInterface;
  */
 class Theme implements ApplicationInterface
 {
+    /**
+     * @var ServiceLocatorInterface
+     */
     protected $serviceLocator;
 
     /**
@@ -29,7 +32,7 @@ class Theme implements ApplicationInterface
     /**
      * @inheritdoc
      */
-    public function getServiceLocator()
+    public function getServiceLocator(): ServiceLocatorInterface
     {
         return $this->serviceLocator;
     }
@@ -37,7 +40,7 @@ class Theme implements ApplicationInterface
     /**
      * @inheritdoc
      */
-    public function register( ServiceProviderInterface $serviceProvider )
+    public function register( ServiceProviderInterface $serviceProvider ): void
     {
         $serviceProvider->register( $this->serviceLocator );
     }
@@ -45,7 +48,7 @@ class Theme implements ApplicationInterface
     /**
      * @inheritdoc
      */
-    public function run()
+    public function run(): void
     {
         foreach ( $this->serviceLocator as $component ) {
             if ( $component instanceof BootstrapInterface ) {

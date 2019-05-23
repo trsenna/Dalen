@@ -2,6 +2,7 @@
 
 namespace Dalen\Contracts;
 
+use Dalen\Contracts\DI\ServiceLocatorInterface;
 use Dalen\Contracts\DI\ServiceProviderInterface;
 
 /**
@@ -11,9 +12,9 @@ use Dalen\Contracts\DI\ServiceProviderInterface;
  */
 interface ApplicationInterface
 {
-    public function getServiceLocator();
+    public function getServiceLocator(): ServiceLocatorInterface;
 
-    public function register( ServiceProviderInterface $serviceProvider );
+    public function register( ServiceProviderInterface $serviceProvider ): void;
 
-    public function run();
+    public function run(): void;
 }

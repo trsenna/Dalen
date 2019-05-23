@@ -9,5 +9,5 @@ namespace Dalen\Contracts;
  */
 interface BootstrapInterface
 {
-    public function __bootstrap();
+    public function __bootstrap(): void;
 }
