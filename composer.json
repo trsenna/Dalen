@@ -1,0 +1,24 @@
+{
+  "name": "trsenna/dalen",
+  "description": "The Dalen WordPress framework that helps make modern PHP projects possible.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Thiago Senna",
+      "homepage": "http://thremes.com.br"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/trsenna/Dalen/issues",
+    "source": "https://github.com/trsenna/Dalen"
+  },
+  "require": {
+    "php": ">=7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dalen\\": "includes/src/"
+    }
+  }
+}

@@ -32,5 +32,5 @@ if ( !$safe ) return;
 # any classes/functions are available that we might need.
 #
 
-//require_once( __DIR__ . '/includes/bootstrap-autoload.php' );
-//require_once( __DIR__ . '/includes/bootstrap-plugin.php' );
+require_once( __DIR__ . '/includes/bootstrap-autoload.php' );
+require_once( __DIR__ . '/includes/bootstrap-plugin.php' );
