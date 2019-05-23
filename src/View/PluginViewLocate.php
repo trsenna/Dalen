@@ -6,11 +6,11 @@ use Dalen\Contracts\View\ViewLocateInterface;
 use Dalen\Contracts\View\ViewNamesInterface;
 
 /**
- * Class PluginLocate
+ * Class PluginViewLocate
  *
  * @package Dalen\View
  */
-class PluginLocate implements ViewLocateInterface
+class PluginViewLocate implements ViewLocateInterface
 {
     /**
      * @var string
@@ -18,9 +18,9 @@ class PluginLocate implements ViewLocateInterface
     private $baseDir;
 
     /**
-     * PluginLocate constructor.
+     * PluginViewLocate constructor.
      *
-     * @param $baseDir
+     * @param string $baseDir
      */
     public function __construct( string $baseDir )
     {
@@ -33,6 +33,7 @@ class PluginLocate implements ViewLocateInterface
     public function locate( ViewNamesInterface $viewNames ): string
     {
         $located = '';
+
         foreach ( $viewNames as $name ) {
             if ( file_exists( trailingslashit( $this->baseDir ) . "{$name}.tpl.php" ) ) {
                 $located = trailingslashit( $this->baseDir ) . "{$name}.tpl.php";

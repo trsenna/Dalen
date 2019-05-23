@@ -6,11 +6,11 @@ use Dalen\Contracts\View\ViewLocateInterface;
 use Dalen\Contracts\View\ViewNamesInterface;
 
 /**
- * Class ThemeLocate
+ * Class ThemeViewLocate
  *
  * @package Dalen\View
  */
-class ThemeLocate implements ViewLocateInterface
+class ThemeViewLocate implements ViewLocateInterface
 {
     /**
      * @inheritdoc
