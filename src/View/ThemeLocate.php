@@ -3,7 +3,7 @@
 namespace Dalen\View;
 
 use Dalen\Contracts\View\ViewLocateInterface;
-use Dalen\Contracts\View\ViewNameInterface;
+use Dalen\Contracts\View\ViewNamesInterface;
 
 /**
  * Class ThemeLocate
@@ -15,15 +15,13 @@ class ThemeLocate implements ViewLocateInterface
     /**
      * @inheritdoc
      */
-    public function locate( ViewNameInterface $viewName )
+    public function locate( ViewNamesInterface $viewNames ): string
     {
         $templates = [];
 
-        if ( '' !== $viewName->name() ) {
-            $templates[] = "{$viewName->slug()}-{$viewName->name()}.tpl.php";
+        foreach ( $viewNames as $name ) {
+            $templates[] = "{$name}.tpl.php";
         }
-
-        $templates[] = "{$viewName->slug()}.tpl.php";
 
         return locate_template( $templates, false );
     }

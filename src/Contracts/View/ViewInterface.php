@@ -9,5 +9,5 @@ namespace Dalen\Contracts\View;
  */
 interface ViewInterface
 {
-    public function render( array $context = [] );
+    public function render( array $context = [] ): string;
 }

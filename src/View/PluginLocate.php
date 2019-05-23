@@ -3,7 +3,7 @@
 namespace Dalen\View;
 
 use Dalen\Contracts\View\ViewLocateInterface;
-use Dalen\Contracts\View\ViewNameInterface;
+use Dalen\Contracts\View\ViewNamesInterface;
 
 /**
  * Class PluginLocate
@@ -12,6 +12,9 @@ use Dalen\Contracts\View\ViewNameInterface;
  */
 class PluginLocate implements ViewLocateInterface
 {
+    /**
+     * @var string
+     */
     private $baseDir;
 
     /**
@@ -19,28 +22,20 @@ class PluginLocate implements ViewLocateInterface
      *
      * @param $baseDir
      */
-    public function __construct( $baseDir )
+    public function __construct( string $baseDir )
     {
-        $this->baseDir = $baseDir;
+        $this->baseDir = (string)$baseDir;
     }
 
     /**
      * @inheritdoc
      */
-    public function locate( ViewNameInterface $viewName )
+    public function locate( ViewNamesInterface $viewNames ): string
     {
-        $templates = [];
-
-        if ( '' !== $viewName->name() ) {
-            $templates[] = "{$viewName->slug()}-{$viewName->name()}.tpl.php";
-        }
-
-        $templates[] = "{$viewName->slug()}.tpl.php";
-
         $located = '';
-        foreach ( (array)$templates as $template ) {
-            if ( file_exists( trailingslashit( $this->baseDir ) . $template ) ) {
-                $located = trailingslashit( $this->baseDir ) . $template;
+        foreach ( $viewNames as $name ) {
+            if ( file_exists( trailingslashit( $this->baseDir ) . "{$name}.tpl.php" ) ) {
+                $located = trailingslashit( $this->baseDir ) . "{$name}.tpl.php";
                 break;
             }
         }
