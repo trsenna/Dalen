@@ -24,11 +24,21 @@ class About implements BootstrapInterface, ServiceProviderInterface
         }
     }
 
+    /**
+     * Get the plugin filename.
+     *
+     * @return string
+     */
     public function getPluginFile(): string
     {
         return trailingslashit( dirname( __DIR__, 2 ) ) . 'dalen.php';
     }
 
+    /**
+     * Get the plugin version.
+     *
+     * @return string
+     */
     public function getPluginVersion(): string
     {
         return get_file_data( $this->getPluginFile(), [ 'Version' ] )[ 0 ];
