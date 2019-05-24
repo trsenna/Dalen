@@ -27,7 +27,7 @@ if ( !$safe ) {
         printf(
             '<div class="error"><p>%s</p></div>',
             __( "Minimal requirements are not satisfied by {$plugin_name} plugin. Please, ask 
-            for some help from your developer or just deactivate the plugin.", 'functionality' )
+            for some help from your developer or just deactivate the plugin.", 'dalen' )
         );
 
     } );
