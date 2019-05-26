@@ -37,8 +37,8 @@ add_action( 'dalen/compat/safe', function () {
 # Compatibility check.
 # ------------------------------------------------------------------------------
 #
-# Check that the site meets the minimum requirements for the plugin before
-# proceeding.
+# Check that the site meets the minimum requirements for the plugin
+# before proceeding.
 #
 
 require_once( __DIR__ . '/includes/bootstrap-compat.php' );
