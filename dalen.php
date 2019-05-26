@@ -21,7 +21,7 @@
 # first so that any classes/functions are available that we might need.
 #
 
-add_action( 'dalen/safe', function () {
+add_action( 'dalen/compat/safe', function () {
 
     define( 'DALEN_PLUGIN', true );
     define( 'DALEN_PLUGIN_FILE', __FILE__ );

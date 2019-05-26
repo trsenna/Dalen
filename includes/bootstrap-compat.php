@@ -8,7 +8,7 @@
 # wasn't met.
 #
 
-add_action( 'dalen/unsafe', function () {
+add_action( 'dalen/compat/unsafe', function () {
     add_action( 'admin_notices', function () {
 
         $plugin_data = get_plugin_data(
@@ -35,5 +35,5 @@ add_action( 'dalen/unsafe', function () {
 $safe = version_compare( $GLOBALS[ 'wp_version' ], '5.2', '>=' );
 $safe = $safe && version_compare( PHP_VERSION, '7.2', '>=' );
 
-if ( $safe ) do_action( 'dalen/safe' );
-if ( !$safe ) do_action( 'dalen/unsafe' );
+if ( $safe ) do_action( 'dalen/compat/safe' );
+if ( !$safe ) do_action( 'dalen/compat/unsafe' );
