@@ -1,17 +1,6 @@
 <?php
 
 # ------------------------------------------------------------------------------
-# Minimal WP/PHP requirements.
-# ------------------------------------------------------------------------------
-#
-# This section checks if PHP and WordPress has their minimal
-# requirements satisfied.
-#
-
-$safe = version_compare( $GLOBALS[ 'wp_version' ], '5.2', '>=' );
-$safe = $safe && version_compare( PHP_VERSION, '7.2', '>=' );
-
-# ------------------------------------------------------------------------------
 # Maybe display error messages.
 # ------------------------------------------------------------------------------
 #
@@ -19,26 +8,32 @@ $safe = $safe && version_compare( PHP_VERSION, '7.2', '>=' );
 # wasn't met.
 #
 
-if ( !$safe ) {
+add_action( 'dalen/unsafe', function () {
     add_action( 'admin_notices', function () {
 
-        $plugin_name = basename( dirname( __DIR__ ) );
+        $plugin_data = get_plugin_data(
+            trailingslashit( dirname( __DIR__ ) ) . 'dalen.php'
+        );
 
         printf(
             '<div class="error"><p>%s</p></div>',
-            __( "Minimal requirements are not satisfied by {$plugin_name} plugin. Please, ask 
+            __( "Minimal requirements are not satisfied by {$plugin_data['Name']} plugin. Please, ask 
             for some help from your developer or just deactivate the plugin.", 'dalen' )
         );
 
     } );
-}
+} );
 
 # ------------------------------------------------------------------------------
-# Return if it's safe environment.
+# Checks if it's a safe environment.
 # ------------------------------------------------------------------------------
 #
-# Just return a positive or negative status about how safe is
-# running this plugin with the current WordPress environment.
+# This section checks if minimal requirements is satisfied and notify
+# by hooks if the environment is safe or unsafe.
 #
 
-return $safe;
+$safe = version_compare( $GLOBALS[ 'wp_version' ], '5.2', '>=' );
+$safe = $safe && version_compare( PHP_VERSION, '7.2', '>=' );
+
+if ( $safe ) do_action( 'dalen/safe' );
+if ( !$safe ) do_action( 'dalen/unsafe' );
