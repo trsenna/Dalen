@@ -13,6 +13,10 @@
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+define( 'DALEN_PLUGIN', true );
+define( 'DALEN_PLUGIN_FILE', __FILE__ );
+define( 'DALEN_PLUGIN_VERSION', '0.1.0' );
+
 # ------------------------------------------------------------------------------
 # Compatibility check.
 # ------------------------------------------------------------------------------
