@@ -10,8 +10,8 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/trsenna/Dalen/issues",
-    "source": "https://github.com/trsenna/Dalen"
+    "issues": "https://github.com/trsenna/dalen/issues",
+    "source": "https://github.com/trsenna/dalen"
   },
   "require": {
     "php": ">=7.2"

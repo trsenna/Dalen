@@ -6,11 +6,12 @@ namespace Dalen;
 # Register service providers.
 # ------------------------------------------------------------------------------
 #
-# Before booting the application, add any service providers that are necessary
-# for running the plugin.
+# Before booting the application, add any service providers that are
+# necessary for running the plugin.
 #
 
 plugin()->register( new About() );
+
 
 # ------------------------------------------------------------------------------
 # Perform bootstrap actions.
@@ -22,11 +23,12 @@ plugin()->register( new About() );
 
 do_action( 'dalen/bootstrap', plugin() );
 
+
 # ------------------------------------------------------------------------------
 # Bootstrap the plugin.
 # ------------------------------------------------------------------------------
 #
-# Calls the theme `run()` method, which launches the plugin.
+# Calls the plugin `run()` method, which launches the plugin.
 #
 
 plugin()->run();
