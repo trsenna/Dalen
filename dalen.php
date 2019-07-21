@@ -5,7 +5,7 @@
  * Author:      Thiago Senna
  * Author URI:  http://thremes.com.br
  * Description: The Dalen WordPress framework that helps make modern PHP projects possible.
- * Version:     0.1.0
+ * Version:     0.2.0
  *
  * @package   Dalen
  * @author    Thiago Senna <thiago@thremes.com.br>
