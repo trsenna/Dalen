@@ -1,6 +1,25 @@
 <?php
 
 # ------------------------------------------------------------------------------
+# Checks if it's a safe environment.
+# ------------------------------------------------------------------------------
+#
+# This section checks if minimal requirements is satisfied and notify
+# by hooks if the environment is safe or unsafe.
+#
+
+add_action( 'plugins_loaded', function () {
+
+    $safe = version_compare( $GLOBALS[ 'wp_version' ], '5.2', '>=' );
+    $safe = $safe && version_compare( PHP_VERSION, '7.3', '>=' );
+
+    if ( $safe ) do_action( 'dalen/compat/safe' );
+    if ( !$safe ) do_action( 'dalen/compat/unsafe' );
+
+}, PHP_INT_MIN );
+
+
+# ------------------------------------------------------------------------------
 # Maybe display error messages.
 # ------------------------------------------------------------------------------
 #
@@ -11,9 +30,7 @@
 add_action( 'dalen/compat/unsafe', function () {
     add_action( 'admin_notices', function () {
 
-        $plugin_data = get_plugin_data(
-            trailingslashit( dirname( __DIR__ ) ) . 'dalen.php'
-        );
+        $plugin_data = get_plugin_data( DALEN_PLUGIN_FILE );
 
         printf(
             '<div class="error"><p>%s</p></div>',
@@ -23,17 +40,3 @@ add_action( 'dalen/compat/unsafe', function () {
 
     } );
 } );
-
-# ------------------------------------------------------------------------------
-# Checks if it's a safe environment.
-# ------------------------------------------------------------------------------
-#
-# This section checks if minimal requirements is satisfied and notify
-# by hooks if the environment is safe or unsafe.
-#
-
-$safe = version_compare( $GLOBALS[ 'wp_version' ], '5.2', '>=' );
-$safe = $safe && version_compare( PHP_VERSION, '7.2', '>=' );
-
-if ( $safe ) do_action( 'dalen/compat/safe' );
-if ( !$safe ) do_action( 'dalen/compat/unsafe' );

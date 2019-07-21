@@ -13,24 +13,9 @@
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
-# ------------------------------------------------------------------------------
-# Bootstrap the plugin.
-# ------------------------------------------------------------------------------
-#
-# Maybe load the bootstrap files. Note that autoloading should happen
-# first so that any classes/functions are available that we might need.
-#
-
-add_action( 'dalen/compat/safe', function () {
-
-    define( 'DALEN_PLUGIN', true );
-    define( 'DALEN_PLUGIN_FILE', __FILE__ );
-    define( 'DALEN_PLUGIN_VERSION', get_file_data( __FILE__, [ 'Version' ] )[ 0 ] );
-
-    require_once( __DIR__ . '/includes/bootstrap-autoload.php' );
-    require_once( __DIR__ . '/includes/bootstrap-plugin.php' );
-
-} );
+define( 'DALEN_PLUGIN', true );
+define( 'DALEN_PLUGIN_FILE', __FILE__ );
+define( 'DALEN_PLUGIN_VERSION', get_file_data( __FILE__, [ 'Version' ] )[ 0 ] );
 
 # ------------------------------------------------------------------------------
 # Compatibility check.
@@ -41,3 +26,19 @@ add_action( 'dalen/compat/safe', function () {
 #
 
 require_once( __DIR__ . '/includes/bootstrap-compat.php' );
+
+
+# ------------------------------------------------------------------------------
+# Bootstrap the plugin.
+# ------------------------------------------------------------------------------
+#
+# Maybe load the bootstrap files. Note that autoloading should happen
+# first so that any classes/functions are available that we might need.
+#
+
+add_action( 'dalen/compat/safe', function () {
+
+//    require_once( __DIR__ . '/includes/bootstrap-autoload.php' );
+//    require_once( __DIR__ . '/includes/bootstrap-plugin.php' );
+
+} );
