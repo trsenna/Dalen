@@ -17,6 +17,7 @@ define( 'DALEN_PLUGIN', true );
 define( 'DALEN_PLUGIN_FILE', __FILE__ );
 define( 'DALEN_PLUGIN_VERSION', get_file_data( __FILE__, [ 'Version' ] )[ 0 ] );
 
+
 # ------------------------------------------------------------------------------
 # Compatibility check.
 # ------------------------------------------------------------------------------
@@ -39,6 +40,7 @@ require_once( __DIR__ . '/includes/bootstrap-compat.php' );
 add_action( 'dalen/compat/safe', function () {
 
     require_once( __DIR__ . '/includes/bootstrap-autoload.php' );
+    require_once( __DIR__ . '/includes/bootstrap-genesis.php' );
     require_once( __DIR__ . '/includes/bootstrap-plugin.php' );
     require_once( __DIR__ . '/includes/bootstrap-theme.php' );
 

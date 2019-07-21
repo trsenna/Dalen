@@ -6,7 +6,8 @@ namespace Dalen;
 # Perform bootstrap actions.
 # ------------------------------------------------------------------------------
 #
-# Creates an action hook for plugins to hook into the bootstrapping process.
+# Creates an action hook for plugins to hook into the
+# bootstrapping process.
 #
 
 do_action( 'dalen/bootstrap' );
