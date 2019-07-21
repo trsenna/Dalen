@@ -15,12 +15,3 @@ use function Composer\Autoload\includeFile;
 if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload.php' ) ) {
     require_once( dirname( __DIR__ ) . '/vendor/autoload.php' );
 }
-
-# ------------------------------------------------------------------------------
-# Autoload functions files.
-# ------------------------------------------------------------------------------
-#
-# Load any functions-files from the `/includes` folder that are needed.
-#
-
-includeFile( __DIR__ . '/functions-helpers.php' );

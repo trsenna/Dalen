@@ -38,7 +38,8 @@ require_once( __DIR__ . '/includes/bootstrap-compat.php' );
 
 add_action( 'dalen/compat/safe', function () {
 
-//    require_once( __DIR__ . '/includes/bootstrap-autoload.php' );
-//    require_once( __DIR__ . '/includes/bootstrap-plugin.php' );
+    require_once( __DIR__ . '/includes/bootstrap-autoload.php' );
+    require_once( __DIR__ . '/includes/bootstrap-plugin.php' );
+    require_once( __DIR__ . '/includes/bootstrap-theme.php' );
 
 } );
